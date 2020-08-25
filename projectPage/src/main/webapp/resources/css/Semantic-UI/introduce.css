@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+
+.introduct_menu{
+   padding: 14px 16px;
+   text-align:center;
+}
+.introduct_menu_list {
+   list-style-type: none;
+   display:inline-block;
+   margin: 0;
+   padding: 0;
+   background-color: #8bc34a;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 40px 14px 40px;
+    padding-top: 10px;
+    text-decoration: none;
+}
+li {
+    float: left;
+}
+a:hover{background-color:white;color:black;
+}
+img{ display: block; margin: 0px auto; }
+
+.introduce_card_center{width:80%;margin:0px auto;}
+
+.introduce_title{font-size:28px; text-align:center;}

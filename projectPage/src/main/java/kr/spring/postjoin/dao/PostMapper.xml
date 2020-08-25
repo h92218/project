@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.postjoin.dao.PostMapper">  
+  
+ 	<select id="selectRowCount" parameterType="map" resultType="integer">
+ 		SELECT COUNT(*) FROM post p JOIN member m 
+ 		ON p.mem_num = m.mem_num
+ 		<where>
+ 			<if test="keyword != '' and keyfield == 'post_title'">
+ 				p.post_title LIKE '%' || #{keyword} || '%'
+ 			</if>
+ 			<if test="keyword != '' and keyfield == 'post_category'">
+ 				p.post_category LIKE '%' || #{keyword} || '%'
+ 			</if>
+ 			<if test="keyword != '' and keyfield == 'mem_id'">
+ 				m.mem_id LIKE '%' || #{keyword} || '%'
+ 			</if>
+ 			<if test="keyword != '' and keyfield == 'post_board'">
+ 				p.post_board LIKE '%' || #{keyword} || '%'
+ 			</if>
+ 		</where>
+ 	</select> 
+ 
+ 	<select id="selectPostList" parameterType="map" resultType="postVO">
+ 		SELECT * FROM (SELECT a.*,rownum rnum FROM(SELECT * FROM post p JOIN member m ON p.mem_num = m.mem_num 
+ 				<where>
+		 			<if test="keyword != '' and keyfield == 'post_title'">
+		 				p.post_title LIKE '%' || #{keyword} || '%'
+		 			</if>
+		 			<if test="keyword != '' and keyfield == 'post_category'">
+ 						p.post_category LIKE '%' || #{keyword} || '%'
+ 					</if>
+		 			<if test="keyword != '' and keyfield == 'mem_id'">
+		 				m.mem_id LIKE '%' || #{keyword} || '%'
+		 			</if>
+		 			<if test="keyword != '' and keyfield == 'post_board'">
+		 				p.post_board LIKE '%' || #{keyword} || '%'
+		 			</if>
+ 				</where>
+ 					ORDER BY p.post_num DESC)a)
+ 		<![CDATA[
+ 			WHERE rnum >= #{start} AND rnum <= #{end}
+ 		]]>			
+ 	</select>
+ 	
+ 	 <update id="updatePost" parameterType="postVO">
+ 		UPDATE post SET
+		<if test="post_imgname !=''">
+			post_img=#{post_img},
+			post_imgname=#{post_imgname},
+		</if>
+		post_title=#{post_title},
+		post_board=#{post_board},
+		post_category=#{post_category},
+		post_date=SYSDATE
+	WHERE post_num=#{post_num}
+ 	</update>
+</mapper>
+
+
+
+
+
+
+

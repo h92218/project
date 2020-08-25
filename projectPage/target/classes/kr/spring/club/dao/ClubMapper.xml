@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.club.dao.ClubMapper">
+	<select id="selectRowCount" parameterType="map" resultType="integer">
+		SELECT COUNT(*)	FROM club c JOIN member m ON c.mem_num=m.mem_num
+		<where>
+			<if test="keyword != '' and keyfield == 'club_title'">
+				c.club_title LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'mem_id'">
+				m.mem_id LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'club_detail'">
+				c.club_detail LIKE '%' || #{keyword} || '%'
+			</if>
+		</where>
+	</select>
+	<select id="selectList" parameterType="map" resultType="ClubVO">
+		SELECT * FROM (SELECT a.*, rownum rnum FROM
+			(SELECT * FROM club c JOIN member m ON c.mem_num=m.mem_num
+		<where>
+			<if test="keyword != '' and keyfield == 'club_title'">
+					c.club_title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyword != '' and keyfield == 'mem_id'">
+					m.mem_id LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyword != '' and keyfield == 'club_detail'">
+					c.club_detail LIKE '%' || #{keyword} || '%'
+				</if>
+		</where>
+		ORDER BY c.club_num DESC) a)
+		<![CDATA[ WHERE rnum >= #{start} AND rnum <= #{end} ]]>
+	</select>
+	
+	<select id="genreList" parameterType="map" resultType="ClubVO">
+		
+		SELECT * FROM (SELECT a.* FROM 
+			(SELECT * FROM club c JOIN member m ON c.mem_num=m.mem_num
+		<where>
+			<if test="keyword != '' and keyfield == 'club_genre'">
+					c.club_genre LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyword != '' and keyfield == 'club_interval'">
+					c.club_interval LIKE '%' || #{keyword} || '%'
+				</if>
+		</where>
+		ORDER BY c.club_num DESC) a)
+		<![CDATA[ WHERE club_state = 2 AND club_end+1>=SYSDATE]]>
+		
+	</select>
+	
+	<insert id="insert" parameterType="clubVO">
+		INSERT INTO club
+			(club_num,club_title,club_name,club_genre,club_loc,club_time,club_start,club_end,club_interval,club_img,filename,club_detail,mem_num)
+		VALUES
+			(club_seq.nextval,#{club_title},#{club_name},#{club_genre},#{club_loc},#{club_time},#{club_start},#{club_end},#{club_interval},#{club_img},#{filename},#{club_detail},#{mem_num})
+	</insert>
+	
+	<update id="adminUpdate" parameterType="clubVO">
+	UPDATE club SET
+	<if test="filename != ''">
+		club_img=#{club_img}, filename=#{filename},	
+	</if>
+	club_title=#{club_title},club_name=#{club_name},club_genre=#{club_genre},club_loc=#{club_loc},club_time=#{club_time},club_start=#{club_start},club_end=#{club_end},club_interval=#{club_interval},club_detail=#{club_detail},club_state=#{club_state} WHERE club_num=#{club_num}
+	</update>
+	
+	<update id="update" parameterType="clubVO">
+	UPDATE club SET
+	<if test="filename != ''">
+		club_img=#{club_img}, filename=#{filename},	
+	</if>
+	club_title=#{club_title},club_name=#{club_name},club_genre=#{club_genre},club_loc=#{club_loc},club_time=#{club_time},club_start=#{club_start},club_end=#{club_end},club_interval=#{club_interval},club_detail=#{club_detail},mem_num=#{mem_num} WHERE club_num=#{club_num}
+	</update>
+</mapper>

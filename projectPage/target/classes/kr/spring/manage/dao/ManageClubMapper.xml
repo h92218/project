@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.manage.dao.ManageClubMapper">
+
+<select id="selectList1" parameterType="map" resultType="ManageClubVO">
+		select * from 
+		(select a.*,rownum rnum from
+			(select club.*,member.mem_id from club, member 
+				where club.mem_num=member.mem_num order by club_date desc)a 
+		where club_state=1) 
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	<select id="selectList2" parameterType="map" resultType="ManageClubVO">
+		select * from 
+		(select a.*,rownum rnum from
+			(select club.*,member.mem_id from club, member 
+				where club.mem_num=member.mem_num order by club_date desc)a 
+		where club_state=2) 
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	<select id="selectList3" parameterType="map" resultType="ManageClubVO">
+		select * from 
+		(select a.*,rownum rnum from
+			(select club.*,member.mem_id from club, member 
+				where club.mem_num=member.mem_num order by club_date desc)a 
+		where club_state=3) 
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+
+	
+	
+	</mapper>

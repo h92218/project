@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+    
+<mapper namespace="kr.spring.manage.dao.ManageMemberMapper">
+
+
+<select id="selectRowCount" parameterType="map" resultType="integer">
+		select count(*) from member a join member_detail b on a.mem_num=b.mem_num
+		
+		<where>
+			<if test="keyfield =='auth0'">
+				mem_auth = 0
+			</if>
+			<if test="keyfield =='auth1'">
+				mem_auth = 1
+			</if>
+			<if test="keyfield =='auth2'">
+				mem_auth = 2
+			</if>
+			<if test="keyfield =='auth3'">
+				mem_auth = 3
+			</if>
+			<if test="keyfield =='auth4'">
+				mem_auth = 4
+			</if>
+			
+			<if test="keyword != '' and keyfield == 'id'">
+				mem_id like '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="keyword != '' and keyfield == 'nick'">
+				detail_nick like '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="keyword != '' and keyfield == 'name'">
+				detail_name like '%' || #{keyword} || '%'
+			</if>
+			
+		</where>
+		
+	</select>
+	
+	
+	<select id="selectList" parameterType="map" resultType="manageMemberVO">
+	select * from (select rownum rnum, c.* from
+	(select b.*,a.mem_id,a.mem_auth 
+	from member a ,member_detail b 
+	where a.mem_num=b.mem_num order by detail_date desc)c
+					
+		<where>
+			<if test="keyfield =='auth0'">
+			mem_auth = 0
+			</if>
+			<if test="keyfield =='auth1'">
+			mem_auth = 1
+			</if>
+			<if test="keyfield =='auth2'">
+			mem_auth = 2
+			</if>
+			<if test="keyfield =='auth3'">
+			mem_auth = 3
+			</if>
+			<if test="keyfield =='auth4'">
+			mem_auth = 4
+			</if>
+			<if test="keyword != '' and keyfield == 'id'">
+				mem_id like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'nick'">
+				detail_nick like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'name'">
+				detail_name like '%' || #{keyword} || '%'
+			</if>
+		
+		</where>
+					)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	<select id="modifyList" parameterType="integer" resultType="manageMemberVO">
+		
+		
+		select * from (select a.mem_id,a.mem_num,b.detail_point,a.mem_auth,b.detail_name,b.detail_date
+		from member a, member_detail b where a.mem_num=b.mem_num) 
+		
+		<where>
+		mem_num=#{num}
+		</where>
+	
+	</select>
+	
+	
+</mapper>

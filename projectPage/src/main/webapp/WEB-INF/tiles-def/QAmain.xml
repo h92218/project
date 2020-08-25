@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+
+<tiles-definitions>
+	<definition name="qamain_write" extends="main">
+		<put-attribute name="title" value="QA 질문 게시판"/>
+		<put-attribute name="body" value="/WEB-INF/views/ClubQA/QAmain_write.jsp"/>
+	</definition>
+	
+		<definition name="qa_delete" extends="main">
+		<put-attribute name="title" value="QA 질문 게시판"/>
+		<put-attribute name="body" value="/WEB-INF/views/ClubQA/QAdelete_complete.jsp"/>
+	</definition>
+	
+	
+
+    <definition name="qalist_main" extends="main">
+   		<put-attribute name="title" value="QA 질문 게시판"/>
+   		<put-attribute name="body" value="/WEB-INF/views/ClubQA/QAlist/form/QAlist_main.jsp"/>
+    </definition>
+    
+    <definition name="qalist_write" extends="main">
+   		<put-attribute name="title" value="QA 질문 글쓰기"/>
+   		<put-attribute name="body" value="/WEB-INF/views/ClubQA/QAlist/form/QAlist_write.jsp"/>
+    </definition>
+    
+    <definition name="qalist_detail" extends="main">
+   		<put-attribute name="title" value="QA 질문 상세페이지"/>
+   		<put-attribute name="body" value="/WEB-INF/views/ClubQA/QAlist/form/QAlist_detail.jsp"/> 
+    </definition>
+    
+    <definition name="qalist_update" extends="main">
+   		<put-attribute name="title" value="QA 질문 글수정"/>
+   		<put-attribute name="body" value="/WEB-INF/views/ClubQA/QAlist/form/QAlist_update.jsp"/>
+    </definition>
+    
+    
+    
+    <definition name="qa1_1_main" extends="main">
+   		<put-attribute name="title" value="QA 신고 게시판"/>
+   		<put-attribute name="body" value="/WEB-INF/views/ClubQA/QA1_1/form/QA1_1_main.jsp"/>
+    </definition>
+    
+    <definition name="qa1_1_write" extends="main">
+   		<put-attribute name="title" value="QA 신고 글쓰기"/>
+   		<put-attribute name="body" value="/WEB-INF/views/ClubQA/QA1_1/form/QA1_1_write.jsp"/>
+    </definition>
+    
+    <definition name="qa1_1_detail" extends="main">
+   		<put-attribute name="title" value="QA 질문 상세페이지"/>
+   		<put-attribute name="body" value="/WEB-INF/views/ClubQA/QA1_1/form/QA1_1_detail.jsp"/>
+    </definition>
+    
+    <definition name="qa1_1_update" extends="main">
+   		<put-attribute name="title" value="QA 질문 상세페이지"/>
+   		<put-attribute name="body" value="/WEB-INF/views/ClubQA/QA1_1/form/QA1_1_update.jsp"/>
+    </definition>
+</tiles-definitions>
+
+
+       

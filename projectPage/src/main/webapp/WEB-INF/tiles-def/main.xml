@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="main" template="/WEB-INF/views/template/layout.jsp">
+       <put-attribute name="title" value="++CLUB"/> 
+       <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+       <put-attribute name="body" value="/WEB-INF/views/main/main.jsp"/>
+       <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+    </definition>
+    
+    <definition name="mobileMain" template="/WEB-INF/views/mobile_template/layout.jsp">
+       <put-attribute name="title" value="++CLUB"/> 
+       <put-attribute name="header" value="/WEB-INF/views/mobile_template/header.jsp"/>
+       <put-attribute name="body" value="/WEB-INF/views/main/mobile_main.jsp"/>
+       <put-attribute name="footer" value="/WEB-INF/views/mobile_template/footer.jsp"/>
+    </definition>
+    
+    <definition name="EditPicture" extends="main">
+    <put-attribute name="body" value="/WEB-INF/views/manager/EditPicture.jsp"/>
+    </definition>
+    
+    
+    <definition name="notice" template="/WEB-INF/views/template/layout.jsp">
+       <put-attribute name="title" value="공지사항 게시판"/> 
+       <put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+       <put-attribute name="body" value="/WEB-INF/views/notice/noticeList.jsp"/>
+       <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+    </definition>
+       
+    
+    <definition name="QAmain" extends="main">
+   		<put-attribute name="title" value="QA 메인 게시판"/>
+   		<put-attribute name="body" value="/WEB-INF/views/ClubQA/QAmainForm.jsp"/>	
+    </definition>
+    
+    <definition name="introduce" extends="main">
+    	<put-attribute name="body" value="/WEB-INF/views/introduce/introduce.jsp"/>
+    </definition>
+    
+    <definition name="/introduce/fightclub" extends="introduce">
+    <put-attribute name="body" value="/WEB-INF/views/introduce/fightclub.jsp"/>
+    </definition>
+    
+    <definition name="/introduce/membership" extends="introduce">
+    <put-attribute name="body" value="/WEB-INF/views/introduce/membership.jsp"/>	
+    </definition>
+    
+    <definition name="manageClub" extends="main">
+    <put-attribute name="body" value="/WEB-INF/views/manager/manageClub.jsp"/>
+    </definition>
+    
+    <definition name="ClubDetail" extends="main">
+    <put-attribute name="body" value="/WEB-INF/views/manager/clubDetail.jsp"/>
+    </definition>
+    
+     <definition name="manageMember" extends="main">
+    <put-attribute name="body" value="/WEB-INF/views/manager/manageMember.jsp"/>
+    </definition>
+   
+    <definition name="status_change" extends="main">
+    <put-attribute name="body" value="/WEB-INF/views/manager/status_change.jsp"/>
+    </definition>
+    
+     <definition name="modify_member" extends="main">
+    <put-attribute name="body" value="/WEB-INF/views/manager/modify_member.jsp"/>
+    </definition>
+</tiles-definitions>
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.manage.dao.EditMainPictureMapper">
+
+	<!-- 사진1번 -->
+	<update id="update" parameterType="EditMainPictureVO">
+	UPDATE main_picture SET image=#{image}, filename=#{filename}
+	<where> picture_order=#{picture_order}</where>
+
+	</update>
+	
+	<update id="update_url" parameterType="map">
+	update main_picture set filename=#{filename},image=null 
+	<where>picture_order=#{picture_order}</where>	
+	</update>
+
+	</mapper>

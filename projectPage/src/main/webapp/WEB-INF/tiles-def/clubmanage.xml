@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="clubmanage" extends="main">
+       <put-attribute name="title" value="클럽 관리"/> 
+       <put-attribute name="body" value="/WEB-INF/views/clubmanage/myClubs.jsp"/>
+    </definition>
+    <definition name="leadersClub" extends="clubmanage">
+       <put-attribute name="body" value="/WEB-INF/views/clubmanage/leadersClub.jsp"/>
+    </definition>
+    <definition name="manageMembersForm" extends="clubmanage">
+       <put-attribute name="body" value="/WEB-INF/views/clubmanage/manageMembersForm.jsp"/>
+    </definition>
+</tiles-definitions>
+<!-- dfdf -->
+

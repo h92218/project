@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="myPage" extends="main">
+       <put-attribute name="body" value="/WEB-INF/views/mypage/myPage.jsp"/> 
+    </definition>
+    <definition name="register" extends="main">
+       <put-attribute name="body" value="/WEB-INF/views/mypage/register.jsp"/> 
+    </definition>
+    <definition name="modify" extends="main">
+       <put-attribute name="body" value="/WEB-INF/views/mypage/modify.jsp"/> 
+    </definition>
+    <definition name="local" extends="main">
+       <put-attribute name="body" value="/WEB-INF/views/mypage/local.jsp"/> 
+    </definition>
+    <definition name="memberDelete" extends="main">
+       <put-attribute name="body" value="/WEB-INF/views/mypage/memberDelete.jsp"/> 
+    </definition>
+    <definition name="point" extends="main">
+       <put-attribute name="body" value="/WEB-INF/views/mypage/point.jsp"/> 
+    </definition>
+    <definition name="findPasswd" extends="main">
+       <put-attribute name="body" value="/WEB-INF/views/mypage/findPasswd.jsp"/> 
+    </definition>
+</tiles-definitions>
+
+
+
+
+
+
+
+

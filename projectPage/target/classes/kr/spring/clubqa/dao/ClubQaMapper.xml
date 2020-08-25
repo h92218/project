@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.clubqa.dao.ClubQaMapper">  
+	<select id="selectRowCount" parameterType="map"
+	                      resultType="integer">
+		SELECT
+		   COUNT(*)
+		FROM qa_board b JOIN member m
+		ON b.mem_num=m.mem_num
+		<where>
+			<if test="keyword != '' and keyfield == 'qa_title'">
+				b.qa_title LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'mem_id'">
+				m.mem_id LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'qa_content'">
+				b.qa_content LIKE '%' || #{keyword} || '%'
+			</if>
+		</where>                      
+	</select>
+	<select id="selectList" parameterType="map"
+	                    resultType="clubQAVO">
+		SELECT
+		   *
+		FROM (SELECT
+		         a.*,
+		         rownum rnum
+		      FROM (SELECT
+		               *
+		            FROM qa_board b 
+		            LEFT OUTER JOIN (SELECT qa_num,COUNT(*) re_cnt
+ 	                                                FROM qa_reply
+ 	                                                GROUP BY qa_num)r
+ 	                ON b.qa_num = r.qa_num 
+		            JOIN member m 
+		            ON b.mem_num = m.mem_num
+		            <where>
+						<if test="keyword != '' and keyfield == 'qa_title'">
+							b.qa_title LIKE '%' || #{keyword} || '%'
+						</if>
+						<if test="keyword != '' and keyfield == 'mem_id'">
+							m.mem_id LIKE '%' || #{keyword} || '%'
+						</if>
+						<if test="keyword != '' and keyfield == 'qa_content'">
+							b.qa_content LIKE '%' || #{keyword} || '%'
+						</if>
+					</where> 
+		            ORDER BY b.qa_num DESC)a) 
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>            
+	</select>
+	<select id="selectReply" resultType="clubQAVO">
+		
+                    SELECT * FROM 
+                    	qa_reply b JOIN qa_board m ON 
+                    	b.reply_qa_num = m.qa_num 
+                    WHERE b.reply_qa_num=#{qa_num}
+	</select>
+	
+	<update id="update" parameterType="clubQAVO">
+		UPDATE qa_board SET
+			qa_title=#{qa_title},
+			qa_content=#{qa_content},
+			qa_datetime=SYSDATE
+		WHERE qa_num=#{qa_num}
+	</update>
+	<update id="update1_1" parameterType="clubQA1_1VO">
+		UPDATE qa1_1board SET
+			qa1_1title=#{qa1_1title},
+			qa1_1content=#{qa1_1content},
+			qa1_1datetime=SYSDATE
+		WHERE qa1_1num=#{qa1_1num}
+	</update>
+
+	
+	<!-- 댓글 -->
+	<select id="selectListReply" parameterType="map"
+ 	                     resultType="clubQAReplyVO">
+ 		SELECT
+ 		   qa_reply_num,
+ 		   qa_reply_content,
+ 		   TO_CHAR(qa_reply_datetime,'YYYY-MM-DD HH24:MI:SS') qa_reply_datetime,
+ 		   qa_num,
+ 		   mem_num,
+ 		   mem_id
+ 		FROM (SELECT 
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM (SELECT
+ 		              *
+ 		            FROM qa_reply
+ 		            WHERE qa_num = #{qa_num}
+ 		            ORDER BY qa_reply_num DESC)a)
+ 		<![CDATA[
+ 		WHERE rnum >= #{start} AND rnum <= #{end}
+ 		]]>                                 
+ 	</select>
+ 	<select id="select1_1RowCount" parameterType="map"
+	                      resultType="integer">
+		SELECT
+		   COUNT(*)
+		FROM qa1_1board b JOIN member m
+		ON b.mem_num=m.mem_num
+		<where>
+			<if test="keyword != '' and keyfield == 'qa1_1title'">
+				b.qa1_1title LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'mem_id'">
+				m.mem_id LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'qa1_1content'">
+				b.qa1_1content LIKE '%' || #{keyword} || '%'
+			</if>
+		</where>                      
+	</select>
+	<select id="select1_1List" parameterType="map"
+	                    resultType="clubQA1_1VO">
+		SELECT
+		   *
+		FROM (SELECT
+		         a.*,
+		         rownum rnum
+		      FROM (SELECT
+		               *
+		            FROM qa1_1board b 
+		            LEFT OUTER JOIN (SELECT qa1_1num,COUNT(*) re_cnt
+ 	                                                FROM qa_reply
+ 	                                                GROUP BY qa1_1num)r
+ 	                ON b.qa1_1num = r.qa1_1num 
+		            JOIN member m 
+		            ON b.mem_num = m.mem_num
+		            <where>
+						<if test="keyword != '' and keyfield == 'qa1_1title'">
+							b.qa1_1title LIKE '%' || #{keyword} || '%'
+						</if>
+						<if test="keyword != '' and keyfield == 'mem_id'">
+							m.mem_id LIKE '%' || #{keyword} || '%'
+						</if>
+						<if test="keyword != '' and keyfield == 'qa1_1content'">
+							b.qa1_1content LIKE '%' || #{keyword} || '%'
+						</if>
+					</where> 
+		            ORDER BY b.qa1_1num DESC)a) 
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>            
+	</select>
+	<select id="select1_1ListReply" parameterType="map"
+ 	                     resultType="clubQAReplyVO">
+ 		SELECT
+ 		   qa_reply_num,
+ 		   qa_reply_content,
+ 		   TO_CHAR(qa_reply_datetime,'YYYY-MM-DD HH24:MI:SS') qa_reply_datetime,
+ 		   qa1_1num,
+ 		   mem_num,
+ 		   mem_id
+ 		FROM (SELECT 
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM (SELECT
+ 		              *
+ 		            FROM qa_reply
+ 		            WHERE qa1_1num = #{qa1_1num}
+ 		            ORDER BY qa_reply_num DESC)a)
+ 		<![CDATA[
+ 		WHERE rnum >= #{start} AND rnum <= #{end}
+ 		]]>                                 
+ 	</select>
+ 	<select id="selectaqRowCount" parameterType="map"
+	                      resultType="integer">
+		SELECT
+		   COUNT(*)
+		FROM qa_aqtable b JOIN member m
+		ON b.mem_num=m.mem_num
+		<where>
+			<if test="keyword != '' and keyfield == 'aq_title'">
+				b.aq_title LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'mem_id'">
+				m.mem_id LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'aq_content'">
+				b.aq_content LIKE '%' || #{keyword} || '%'
+			</if>
+		</where>                      
+	</select>
+	<select id="selectaqList" parameterType="map"
+	                    resultType="clubAQVO">
+		SELECT
+		   *
+		FROM (SELECT
+		         a.*,
+		         rownum rnum
+		      FROM (SELECT
+		               *
+		            FROM qa_aqtable b JOIN member m
+		            ON b.mem_num = m.mem_num
+		            <where>
+						<if test="keyword != '' and keyfield == 'aq_title'">
+							b.aq_title LIKE '%' || #{keyword} || '%'
+						</if>
+						<if test="keyword != '' and keyfield == 'mem_id'">
+							m.mem_id LIKE '%' || #{keyword} || '%'
+						</if>
+						<if test="keyword != '' and keyfield == 'aq_content'">
+							b.aq_content LIKE '%' || #{keyword} || '%'
+						</if>
+					</where> 
+		            ORDER BY b.aq_num DESC)a) 
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>            
+	</select>
+
+</mapper>
+
+
+
+
+
+
+

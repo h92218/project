@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="viewclub" extends="main">
+        <put-attribute name="title" value="클럽 현황"/>
+    	<put-attribute name="body" value="/WEB-INF/views/club/viewclub.jsp"/>
+    	<put-attribute name="header" value="/WEB-INF/views/club/headerclub.jsp"/>
+    </definition>
+    <definition name="viewclubdetail" extends="main">
+        <put-attribute name="title" value="클럽 현황"/>
+    	<put-attribute name="body" value="/WEB-INF/views/club/viewclubdetail.jsp"/>
+    	<put-attribute name="header" value="/WEB-INF/views/club/headerclub.jsp"/>
+    </definition>
+    <definition name="boardclub" extends="main">
+        <put-attribute name="title" value="클럽 현황"/>
+    	<put-attribute name="body" value="/WEB-INF/views/club/boardclub.jsp"/>
+    	<put-attribute name="header" value="/WEB-INF/views/club/headerclub.jsp"/>
+    </definition>
+    <definition name="openclub" extends="main">
+    	<put-attribute name="title" value="클럽 현황"/>
+    	<put-attribute name="body" value="/WEB-INF/views/club/openclub.jsp"/>
+    	<put-attribute name="header" value="/WEB-INF/views/club/headerclub.jsp"/>
+    </definition>
+    <definition name="boardclubdetail" extends="main">
+    	<put-attribute name="title" value="클럽 현황"/>
+    	<put-attribute name="body" value="/WEB-INF/views/club/boardclubdetail.jsp"/>
+    	<put-attribute name="header" value="/WEB-INF/views/club/headerclub.jsp"/>
+    </definition>
+    <definition name="boardclubmodify" extends="main">
+    	<put-attribute name="title" value="클럽 현황"/>
+    	<put-attribute name="body" value="/WEB-INF/views/club/boardclubmodify.jsp"/>
+    	<put-attribute name="header" value="/WEB-INF/views/club/headerclub.jsp"/>
+    </definition>
+    <definition name="clubgenre" extends="main">
+    	<put-attribute name="title" value="클럽 현황"/>
+    	<put-attribute name="body" value="/WEB-INF/views/club/clubgenre.jsp"/>
+    	<put-attribute name="header" value="/WEB-INF/views/club/headerclub.jsp"/>
+    </definition>
+    <definition name="clubinterval" extends="main">
+    	<put-attribute name="title" value="클럽 현황"/>
+    	<put-attribute name="body" value="/WEB-INF/views/club/clubinterval.jsp"/>
+    	<put-attribute name="header" value="/WEB-INF/views/club/headerclub.jsp"/>
+    </definition>
+</tiles-definitions>
+
+
+
+
+
+
+
+

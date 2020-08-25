@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.notice.dao.NoticeMapper">  
+	<select id="selectRowCount" parameterType="map" resultType="integer">
+		SELECT 
+			COUNT(*)
+		FROM notice b JOIN member m
+		ON b.mem_num=m.mem_num
+		<where>
+			<if test="keyword != '' and keyfield == 'nt_title'">
+				b.nt_title LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'mem_id'">
+				m.mem_id LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'nt_content'">
+				b.nt_content LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'nt_category'">
+				b.nt_category = #{keyword}
+			</if>
+		</where>
+	</select>
+	<select id="selectList" parameterType="map" resultType="noticeVO">
+		SELECT
+			*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+				FROM (SELECT
+						*
+						FROM notice b JOIN member m 
+						ON b.mem_num = m.mem_num
+						<where>
+							<if test="keyword != '' and keyfield == 'nt_title'">
+								b.nt_title LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyword != '' and keyfield == 'mem_id'">
+								m.mem_id LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyword != '' and keyfield == 'nt_content'">
+								b.nt_content LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyword != '' and keyfield == 'nt_category'">
+								b.nt_category = #{keyword}
+							</if>
+						</where>
+						ORDER BY b.nt_num DESC)a)
+		<![CDATA[
+			WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	<!-- 이미지/문서 파일 다운로드 -->  
+	<update id="update" parameterType="noticeVO">
+		UPDATE notice SET
+		<if test="nt_imgname != ''"> <!-- if 조건이 없으면 파일을 두고 내용만 변경시 기존 데이터가 사라짐 -->
+			nt_img=#{nt_img},
+			nt_imgname=#{nt_imgname},
+		</if>
+		<if test="nt_filename != ''"> <!-- if 조건이 없으면 파일을 두고 내용만 변경시 기존 데이터가 사라짐 -->
+			nt_file=#{nt_file},
+			nt_filename=#{nt_filename},
+		</if>
+		    nt_category=#{nt_category},
+			nt_title=#{nt_title},
+			nt_content=#{nt_content},
+			nt_datetime=SYSDATE
+		WHERE nt_num=#{nt_num}
+	</update>
+</mapper>
+
+
+
+
+
+
+

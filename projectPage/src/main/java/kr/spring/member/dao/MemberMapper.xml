@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.member.dao.MemberMapper">
+	<update id="update" parameterType="memberVO">
+	UPDATE member_detail SET 
+	<if test="detail_img != ''">
+		image=#{image}, detail_img=#{detail_img},
+	</if>
+	detail_nick=#{detail_nick}, detail_cell=#{detail_cell}, detail_passwd=#{detail_passwd} WHERE mem_num=#{mem_num}	
+	</update>
+</mapper>

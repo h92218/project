@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="post" extends="main">
+		<put-attribute name="title" value="참여후기게시판" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/post/post.jsp" />
+	</definition>
+	<definition name="postlist" extends="main">
+		<put-attribute name="title" value="영화후기 게시판" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/post/postlist.jsp" />
+	</definition>
+	<definition name="postwrite" extends="main">
+		<put-attribute name="title" value="후기 등록" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/post/postWrite.jsp" />
+	</definition>
+	<definition name="postView" extends="main">
+		<put-attribute name="title" value="후기 보기" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/post/postView.jsp" />
+	</definition>
+	<definition name="postphoto" extends="main">
+		<put-attribute name="title" value="갤러리" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/post/postphoto.jsp" />
+	</definition>
+	<definition name="postupdate" extends="main">
+		<put-attribute name="title" value="후기 수정" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/post/postupdate.jsp" />
+	</definition>
+	<definition name="postdelete" extends="main">
+		<put-attribute name="title" value="후기 삭제" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/post/postdelete.jsp" />
+	</definition>
+</tiles-definitions>
+
+
+
+
+
+
+
+

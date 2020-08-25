@@ -1,0 +1,414 @@
+/* QAmain_header css */
+@media (min-width: 0px){
+	html{
+		font-size:10px;
+	}
+}
+@media (min-width: 568px){
+	html {
+		font-size:14px;
+	}
+}
+@media (min-width: 768px){
+	html {
+		font-size:14px;
+	}
+}
+@media (min-width: 1024px) {
+	html{
+		font-size:15px;
+	}
+}
+
+@media (min-width: 1300px) {
+	html{
+		font-size:16px
+	}
+}
+.error-color{
+		color:red;
+}
+
+.QAmain_header {
+	background-image: url("../images/litegreenbg.png");
+	background-size: 100% 100%;
+	padding-top: 2rem;
+	text-align: center;
+	
+}
+
+.QAmain_header .header{
+	font-family: 'Youth';
+	font-size: 3.4rem;
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+.QAmain_header_select {
+	padding: 14px 16px;
+	text-align: center;
+}
+
+
+.main_hr {
+	margin-bottom: 2rem;
+}
+
+.QAmain_select li {
+	float: left;
+}
+
+.QAmain_select {
+	list-style-type: none;
+	display: inline-block;
+	margin-bottom: 0.8rem;
+	padding: 0;
+	background: rgba(255, 0, 0, 0.0);
+}
+
+.QAmain_select:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+
+
+.QAmain_select li a {
+	font-family: 'Youth';
+	font-size:1.3rem;
+	display: block;
+	color: #4b371c;
+	text-align: center;
+	padding: 0.9rem 1rem;
+	padding-top: 10px;
+	padding-right: 0.8rem;
+	padding-left: 0.8rem;
+	text-decoration: none;
+}
+
+.QAmain_select li a:hover:not(.active ) {
+	background-color: #c5e1a5;
+}
+
+.active {
+	background-color: #dcedc8;
+}
+/* QAmain_header css */
+
+/* QAmain_list css */
+.QAbody {
+	width: 70%;
+	text-align:center;
+	margin: auto;
+}
+
+.QAbody_table {
+	border-collapse: collapse;
+	border-top: 3px solid #c8e6c9;
+	width: 100%;
+	
+}
+.QAlist_main_header {
+	font-family: 'Youth';
+	text-align:left;
+	text-size: 2rem;
+	border-bottom: thin solid gray;
+	margin-bottom: 1rem;
+}
+
+.QAbody_thead th {
+	font-size: 1rem;
+	text-align: center;
+	
+	height: 50px;
+	
+}
+
+.QAbody_thead {
+	height: 3rem;
+}
+
+.li_class {
+	font-family: 'Noto Sans KR', sans-serif !important;
+}
+
+
+/* QAmain_list css */
+
+/*collapsible css*/
+.collapse_main {
+	width: 50%;
+	text-align:center;
+	margin: auto;
+}
+
+.collapse_header_search{
+	font-size: 2.5rem;
+	margin-top:3rem;
+	margin-bottom:1rem;
+	text-align: left;
+}
+
+
+
+.collapsible {
+	font-family: 'Youth';
+  	background-color: #fffde7;
+  	cursor: pointer;
+  	padding: 18px;
+ 	width: 100%;
+  	border: none;
+  	text-align: left;
+  	outline: none;
+  	font-size: 1.4rem;
+  	border-bottom: thin solid gray;
+  	margin: .7rem 0 .4rem 0;
+}
+
+.active, .collapsible:hover {
+  	background-color: #f0f4c3;
+  	
+}
+
+.collapsible:after {
+  	content: '\002B';
+  	font-weight: bold;
+  	float: right;
+  	margin-left: 5px;
+}
+
+.collapsible .active::after {
+  content: "\002D";
+}
+
+.collapse_content {
+	font-size: 1rem;
+  	padding: 0 18px;
+  	max-height: 0;
+  	overflow: hidden;
+  	transition: max-height 0.2s ease-out;
+  	background-color: #f1f1f1;
+  	text-align: left;
+  	white-space: pre-line;
+}
+button:focus { 
+	background-color: #fff9c4;
+}
+
+/*collapsible css*/
+
+/* 글쓰기 폼 스타일 */
+.write_main {
+	width: 60%;
+	text-align:center;
+	margin: auto;
+	
+}
+
+.writeform_header {
+	
+	font-size: 1.6rem;
+	border-bottom: thin solid black;
+	text-align : left;
+	padding-top: 20px;
+	
+}
+
+table tbody tr th label{
+	font-size: 1rem;
+	font-weight: bold;
+	color: black;
+}
+
+.qaWrite tbody tr td .qa_content {
+	height: 30rem;
+	font-size: 1.1rem;
+	overflow: auto;
+	white-space: pre-line;
+}
+ul li div{
+	text-size: 50px;
+	float:left;
+	border-bottom : thin solid gray;
+	margin-bottom: 10px;
+	font-size: 1.5rem;
+}
+
+.btnSet {
+	text-align: right;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+/* 글쓰기 폼 스타일 */
+/* 질문 게시글 디테일 css */
+.QAlist_detail {
+	width: 50%;
+	text-align: center;
+	margin: auto;
+}
+
+.QAlist_detail_table {
+	border-collapse: collapse;
+	border-top: 2px solid #2e7d32;
+}
+
+.QAlist_detail_table th {
+	width: 8rem;
+	height: 2rem;
+	font-size: 0.9rem; background-color : #f9fbe7;
+	text-align: center;
+	background-color: #f9fbe7;
+}
+
+.QAlist_detail_table td {
+	width: 15rem;
+	border-right: hidden;
+}
+
+.QAlist_detail_header {
+	float: left;
+}
+
+.QA_content {
+	border-bottom: thin solid gray;
+	background-color: #f1f8e9;
+	white-space: pre-line;
+}
+
+.QAlist_reply_detail {
+	border-top: 1px solid blue;
+}
+/* 질문 게시글 디테일 css */
+/*댓글*/
+div#reply_div {
+	margin-top: 10px;
+	background-color: white;
+	width: 50%;
+	text-align: center;
+	margin: auto;
+}
+
+#output_fav, .output_rfav {
+	cursor: pointer;
+}
+
+form#re_form {
+	width: 100%;
+	border: none;
+}
+
+span.re-title {
+	color: #000;
+	font-size: 12pt;
+	line-height: 200%;
+}
+
+span.letter-count {
+	font-size: 10pt;
+	color: #999;
+}
+
+span.form-id {
+	padding-left: 93px;
+	color: #000;
+}
+
+textarea.rep-content {
+	width: 100%;
+	height: 7rem;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	overflow: auto;
+	resize: vertical;
+	white-space: pre-line;
+}
+
+div#re_second {
+	float: right;
+	margin-bottom: 10px;
+}
+
+div#loading {
+	width: 100px;
+	margin: 0 auto;
+}
+
+div.paging-button {
+	text-align: right;
+}
+
+div#output {
+	clear: both;
+}
+
+form#mre_form {
+	border: none;
+	margin: 5px;
+}
+
+.output {
+	width: 70%;
+}
+
+.qa_reply_header {
+	font-size: 2rem;
+}
+/* 댓글 */
+/* 댓글 작성 css */
+.reply_header {
+	border-top: 2px solid black;
+}
+
+.reply_item {
+	width: 50%;
+	text-align: center;
+	margin: auto;
+}
+
+span#reply_title {
+	font-weight: bold;
+	font-size: 1.3rem;
+}
+
+.reply_table {
+	border-top: 2px solid green;
+
+}
+
+.reply_table th {
+	width: 8rem;
+	background-color: #f9fbe7;
+	text-align: center;
+}
+
+.reply_table td {
+	width: 15rem;
+}
+
+.reply_content {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+	height: 10rem;
+	background-color: #f1f8e9;
+	white-space:pre-line;
+}
+
+div#button_select {
+	width: 50%;
+}
+
+.btn {
+	margin-top: 1rem;
+	margin-left: 0.5rem;
+	margin-bottom: 1rem;
+	text-align: right;
+}
+/* 댓글 css 작성*/
+
+.qamain_button {
+	text-align: right;
+	
+	
+}
+
